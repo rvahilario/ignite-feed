@@ -6,6 +6,8 @@
 
 .vertical {
 	flex-direction: column;
+	position: relative;
+	top: -35px;
 }
 
 .vertical .avatar-frame {
@@ -23,6 +25,7 @@
 	height: 60px;
 	padding: 3px;
 	display: flex;
+	background: var(--gray-600);
 }
 
 .avatar-frame img {

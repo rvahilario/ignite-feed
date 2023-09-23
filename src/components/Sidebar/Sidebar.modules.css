@@ -1,6 +1,8 @@
 .sidebar {
-	border: 1px solid red;
+	border-radius: 8px;
+	overflow: hidden;
 	height: 18.375rem;
+	background: var(--gray-600);
 }
 
 .cover-image {
