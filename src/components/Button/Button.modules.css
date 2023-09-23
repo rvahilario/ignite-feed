@@ -1,0 +1,26 @@
+.btn {
+	padding: 1rem 1.5rem;
+	border-radius: 8px;
+	border: 2px solid var(--green);
+	font-weight: 700;
+	display: flex;
+}
+
+.primary {
+	background-color: var(--green);
+	color: var(--white);
+
+	&:hover {
+		background-color: var(--green-light);
+	}
+}
+
+.outline {
+	background-color: transparent;
+	color: var(--green);
+
+	&:hover {
+		background-color: var(--green);
+		color: var(--white);
+	}
+}

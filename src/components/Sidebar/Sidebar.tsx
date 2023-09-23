@@ -2,6 +2,7 @@ import './Sidebar.modules.css'
 
 import { Avatar } from '../Avatar'
 import { Button } from '../Button'
+import { PencilSimpleLine } from '@phosphor-icons/react'
 
 const COVER_DEFAULT =
 	'https://raw.githubusercontent.com/rvahilario/assets/main/ignite-feed/cover-default.jpg'
@@ -20,8 +21,12 @@ export function Sidebar({ user }: SidebarProps) {
 				title={user.title}
 				orientation="vertical"
 			/>
-			<hr />
-			<Button />
+			<div className="container-button">
+				<Button variant={'outline'}>
+					<PencilSimpleLine size={'1.25rem'} weight="bold" className="icon" />
+					Edit your profile
+				</Button>
+			</div>
 		</aside>
 	)
 }
