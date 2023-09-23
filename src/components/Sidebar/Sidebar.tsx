@@ -1,8 +1,8 @@
 import './Sidebar.modules.css'
 
-import { Avatar } from './Avatar'
-import { Button } from './Button'
-import userAvatar from '../assets/user-image.svg'
+import { Avatar } from '../Avatar'
+import { Button } from '../Button'
+import userAvatar from '../../assets/user-image.svg'
 
 const user = {
 	username: 'Leslie Alexander',
@@ -19,8 +19,10 @@ export function Sidebar() {
 				username={user.username}
 				avatarImg={user.avatarImg}
 				title={user.title}
+				orientation="vertical"
 			/>
 			<hr />
+			<Button />
 		</aside>
 	)
 }
