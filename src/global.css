@@ -12,6 +12,11 @@
 	--gray-700: #121214;
 }
 
+:focus {
+	outline: transparent;
+	box-shadow: 0 0 0 1px var(--green-light);
+}
+
 * {
 	margin: 0;
 	padding: 0;

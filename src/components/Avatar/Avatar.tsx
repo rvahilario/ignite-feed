@@ -21,7 +21,7 @@ export function Avatar({
 				<img src={avatarImg || defaultAvatar} />
 			</div>
 
-			<div className="user-info">
+			<div className={`user-info -${orientation}`}>
 				<strong>{username}</strong>
 				{title && <span>{title}</span>}
 			</div>
