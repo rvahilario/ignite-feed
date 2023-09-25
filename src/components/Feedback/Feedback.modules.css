@@ -1,0 +1,15 @@
+.feedback {
+	display: flex;
+	> div + div {
+		margin-left: 1rem;
+	}
+}
+
+.fb-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+.fb-container {
+	background: #29292e;
+	padding: 1rem 1rem 1.5rem;
+}

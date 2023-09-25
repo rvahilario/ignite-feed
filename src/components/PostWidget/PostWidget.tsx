@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 import { Avatar } from '../Avatar'
 import { Button } from '../Button'
+import { Feedback } from '../Feedback'
 
 interface PostWidgetProps {
 	user: UserType
@@ -54,6 +55,7 @@ export function PostWidget({ user }: PostWidgetProps) {
 				/>
 				{comment && <Button onClick={submitFeedback}>Publish</Button>}
 			</footer>
+			<Feedback user={user} />
 		</article>
 	)
 }
