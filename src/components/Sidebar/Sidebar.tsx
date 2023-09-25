@@ -12,6 +12,10 @@ interface SidebarProps {
 }
 
 export function Sidebar({ user }: SidebarProps) {
+	function handleEditProfile() {
+		console.log('click edit profile')
+	}
+
 	return (
 		<aside className="sidebar">
 			<img className="cover-image" src={user.coverImgSrc || COVER_DEFAULT} />
@@ -22,7 +26,7 @@ export function Sidebar({ user }: SidebarProps) {
 				orientation="vertical"
 			/>
 			<div className="container-button">
-				<Button variant={'outline'}>
+				<Button variant={'outline'} onClick={handleEditProfile}>
 					<PencilSimpleLine size={'1.25rem'} weight="bold" className="icon" />
 					Edit your profile
 				</Button>
