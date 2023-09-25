@@ -6,7 +6,7 @@ interface AvatarProps {
 	username: string
 	title?: string
 	avatarImg?: string
-	orientation?: 'horizontal' | 'vertical'
+	orientation?: 'horizontal' | 'vertical' | 'only-avatar'
 }
 
 export function Avatar({
@@ -17,7 +17,7 @@ export function Avatar({
 }: AvatarProps) {
 	return (
 		<div className={`avatar ${orientation}`}>
-			<div className="avatar-frame">
+			<div className={`avatar-frame -${orientation}`}>
 				<img src={avatarImg || defaultAvatar} />
 			</div>
 
