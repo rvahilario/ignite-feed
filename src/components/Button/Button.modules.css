@@ -24,3 +24,24 @@
 		color: var(--white);
 	}
 }
+
+.like {
+	border: none;
+	background-color: transparent;
+	color: var(--gray-300);
+	display: flex;
+	align-items: center;
+	&.-pressed {
+		color: var(--green);
+	}
+	> strong {
+		margin-left: 0.625rem;
+		font-size: 0.875rem;
+		display: flex;
+		align-items: center;
+	}
+
+	&:hover {
+		color: var(--gray-100);
+	}
+}
