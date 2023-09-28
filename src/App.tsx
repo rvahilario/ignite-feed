@@ -3,17 +3,17 @@ import './App.modules.css'
 
 import { Header } from './components/Header'
 import { Sidebar } from './components/Sidebar'
-import { PostWidget } from './components/PostWidget'
+import { PostsFeed } from './components/PostsFeed/PostsFeed'
 
-import { users } from './mocks' //TODO: remove mocks
+import { usersMock } from './mocks' //TODO: remove mocks
 
 export function App() {
 	return (
 		<>
 			<Header />
 			<div className="wrapper">
-				<Sidebar user={users['leslieAlexander']} />
-				<PostWidget user={users['leslieAlexander']} />
+				<Sidebar user={usersMock['leslieAlexander']} />
+				<PostsFeed />
 			</div>
 		</>
 	)

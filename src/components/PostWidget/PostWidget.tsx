@@ -4,47 +4,41 @@ import { useState } from 'react'
 import { Avatar } from '../Avatar'
 import { Button } from '../Button'
 import { Feedback } from '../Feedback'
+import { formatTimestampToDateTime } from '../../utils'
+
+import { usersMock } from '../../mocks'
 
 interface PostWidgetProps {
-	user: UserType
+	postId: string
+	post: PostType
 }
 
-/* TODO: change static code for post information */
-export function PostWidget({ user }: PostWidgetProps) {
+export function PostWidget({ postId, post }: PostWidgetProps) {
 	const [comment, setComment] = useState('')
+	const { user, timestamp, content, feedbacks } = post
+	const time = formatTimestampToDateTime(timestamp)
+	const feedbacksList = (feedbacks && Object.entries(feedbacks)) || []
 
 	function submitFeedback() {
 		console.log('submit comment: ', comment)
 	}
 
 	return (
-		<article className="post-container">
+		<article key={postId} className="post-container">
 			<header className="post-header">
 				<Avatar
-					username={user.username}
+					username={usersMock[user].username}
 					orientation={'horizontal'}
-					title={user.title}
-					avatarImg={user.avatarImg}
+					title={usersMock[user].title}
+					avatarImg={usersMock[user].avatarImg}
 				/>
-				<time title="" dateTime="2023-09-25 00:00:01">
-					{'Published 1h ago'}
-				</time>
+				<time title="" dateTime={time} />
 			</header>
+
 			<div className="post-content">
-				<p>Fala galeraa 👋</p>
-				<p>
-					Acabei de subir mais um projeto no meu portifa. É um projeto que fiz
-					no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀
-				</p>
-				<p>
-					👉<a href="">jane.design/doctorcare</a>
-				</p>
-				<p>
-					<a href="">#novoprojeto</a>
-					<a href="">#nlw</a>
-					<a href="">#rocketseat</a>
-				</p>
+				<p>{content}</p>
 			</div>
+
 			<footer className="post-footer">
 				<strong>Leave your feedback.</strong>
 				<textarea
@@ -55,7 +49,10 @@ export function PostWidget({ user }: PostWidgetProps) {
 				/>
 				{comment && <Button onClick={submitFeedback}>Publish</Button>}
 			</footer>
-			<Feedback user={user} />
+
+			{feedbacksList.map(([id, feedback]) => (
+				<Feedback key={id} user={usersMock[feedback.user]} />
+			))}
 		</article>
 	)
 }
