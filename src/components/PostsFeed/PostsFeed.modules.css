@@ -1,0 +1,5 @@
+.feed-wrapper {
+	> article + article {
+		margin-top: 2rem;
+	}
+}

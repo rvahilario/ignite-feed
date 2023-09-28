@@ -1,32 +1,57 @@
 import './Feedback.modules.css'
+import moment from 'moment'
+import { formatTimestampToDateTime } from '../../utils'
+
 import { Avatar } from '../Avatar'
 import { Button } from '../Button'
+import { Trash } from '@phosphor-icons/react'
 
 interface FeedbackProps {
+	feedback: FeedbackType
 	user: UserType
 }
 
-export function Feedback({ user }: FeedbackProps) {
+export function Feedback({ feedback, user }: FeedbackProps) {
+	const time = formatTimestampToDateTime(feedback.timestamp)
+
 	return (
 		<div className="feedback">
 			<Avatar
 				username={user.username}
 				orientation={'only-avatar'}
-				// title={user.title}
 				avatarImg={user.avatarImg}
 			/>
+
 			<div className="fb-wrapper">
 				<div className="fb-container">
-					<div className="fb-header">
+					<header className="fb-header">
 						<div>
-							<strong>{user.username}</strong>
-							<time title="">3h ago</time>
+							<strong>
+								{user.username}
+							</strong>
+							<time
+								title={formatTimestampToDateTime(
+									feedback.timestamp,
+									'MMM Do YY'
+								)}
+								dateTime={time}
+							>
+								{moment(time).fromNow()}
+							</time>
 						</div>
-						<Button variant="like" onClick={() => console.log('like')} />
+
+					</header>
+
+					<div className="fb-content">{feedback.content}</div>
 					</div>
-					<div className="fb-content"></div>
+
+				<div className="fb-like">
+					<Button
+						variant="like"
+						likes={feedback.likes.length}
+						onClick={() => console.log('like')}
+					/>
 				</div>
-				<div className="fb-like"></div>
 			</div>
 		</div>
 	)
