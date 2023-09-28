@@ -6,12 +6,15 @@ import { Avatar } from '../Avatar'
 import { Button } from '../Button'
 import { Trash } from '@phosphor-icons/react'
 
+import { LOGGED_USER } from '../../mocks'
+
 interface FeedbackProps {
 	feedback: FeedbackType
 	user: UserType
+	readOnly: boolean
 }
 
-export function Feedback({ feedback, user }: FeedbackProps) {
+export function Feedback({ feedback, user, readOnly }: FeedbackProps) {
 	const time = formatTimestampToDateTime(feedback.timestamp)
 
 	return (
@@ -28,6 +31,7 @@ export function Feedback({ feedback, user }: FeedbackProps) {
 						<div>
 							<strong>
 								{user.username}
+								{LOGGED_USER === feedback.user && <span>{' (you)'}</span>}
 							</strong>
 							<time
 								title={formatTimestampToDateTime(
@@ -40,15 +44,23 @@ export function Feedback({ feedback, user }: FeedbackProps) {
 							</time>
 						</div>
 
+						{!readOnly && (
+							<Trash
+								size={'1.5rem'}
+								color={'var(--gray-300)'}
+								weight="regular"
+							/>
+						)}
 					</header>
 
 					<div className="fb-content">{feedback.content}</div>
-					</div>
+				</div>
 
 				<div className="fb-like">
 					<Button
 						variant="like"
 						likes={feedback.likes.length}
+						pressed={feedback.likes.includes(LOGGED_USER)}
 						onClick={() => console.log('like')}
 					/>
 				</div>

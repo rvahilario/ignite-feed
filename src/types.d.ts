@@ -13,7 +13,7 @@ type FeedbackType = {
 	user: string
 	timestamp: number
 	content: string
-	likes: number
+	likes: string[]
 }
 
 type FeedbacksObject = {
