@@ -1,5 +1,5 @@
 import { ReactNode, MouseEvent } from 'react'
-import './Button.modules.css'
+import styles from './Button.module.css'
 import { DotOutline, ThumbsUp } from '@phosphor-icons/react'
 
 interface ButtonProps {
@@ -20,14 +20,20 @@ export function Button({
 	switch (variant) {
 		default:
 			return (
-				<button className={`btn ${variant}`} onClick={onClick}>
+				<button
+					className={`${styles.btn} ${styles[variant]}`}
+					onClick={onClick}
+				>
 					{children}
 				</button>
 			)
 
 		case 'like':
 			return (
-				<button className={`like -${pressed && 'pressed'}`} onClick={onClick}>
+				<button
+					className={`${styles.like} ${pressed && styles.pressed}`}
+					onClick={onClick}
+				>
 					<ThumbsUp size={'0.875rem'} weight="bold" />
 					<strong>
 						Like
