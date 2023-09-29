@@ -1,4 +1,4 @@
-import './PostWidget.modules.css'
+import styles from './PostWidget.module.css'
 import { useState } from 'react'
 
 import { Avatar } from '../Avatar'
@@ -24,8 +24,8 @@ export function PostWidget({ postId, post }: PostWidgetProps) {
 	}
 
 	return (
-		<article key={postId} className="post-container">
-			<header className="post-header">
+		<article key={postId} className={styles.postContainer}>
+			<header className={styles.postHeader}>
 				<Avatar
 					username={usersMock[post.user].username}
 					orientation={'horizontal'}
@@ -40,11 +40,11 @@ export function PostWidget({ postId, post }: PostWidgetProps) {
 				</time>
 			</header>
 
-			<div className="post-content">
+			<div className={styles.postContent}>
 				<p>{post.content}</p>
 			</div>
 
-			<footer className="post-footer">
+			<footer className={styles.postFooter}>
 				<strong>Leave your feedback.</strong>
 				<textarea
 					placeholder="Write a comment..."

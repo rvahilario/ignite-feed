@@ -1,4 +1,4 @@
-.post-container {
+.postContainer {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
@@ -8,23 +8,22 @@
 	background-color: var(--gray-600);
 }
 
-.post-header {
+.postHeader {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	> time {
+		font-size: 0.875rem;
+		color: var(--gray-300);
+		line-height: 1.6;
+	}
 }
 
-.post-header > time {
-	font-size: 0.875rem;
-	color: var(--gray-300);
-	line-height: 1.6;
-}
-
-.post-content {
+.postContent {
 	margin: 1.5rem 0;
 }
 
-.post-footer {
+.postFooter {
 	display: flex;
 	flex-direction: column;
 	border-top: 1px solid var(--gray-500);
@@ -32,9 +31,12 @@
 	+ div {
 		margin-top: 2rem;
 	}
+	> button {
+		width: fit-content;
+	}
 }
 
-.post-footer > textarea {
+.postFooter > textarea {
 	border-radius: 8px;
 	background: var(--gray-700);
 	min-height: 6rem;
@@ -44,8 +46,4 @@
 	margin: 1rem 0;
 	resize: none;
 	border: 1px solid transparent;
-}
-
-.post-footer > button {
-	width: fit-content;
 }
