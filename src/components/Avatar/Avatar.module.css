@@ -1,0 +1,61 @@
+.avatar {
+	display: flex;
+	align-items: center;
+	line-height: 160%;
+
+	&.vertical {
+		flex-direction: column;
+		position: relative;
+		top: -2.1875rem;
+	}
+}
+
+.avatarFrame {
+	border-radius: 8px;
+	border: 2px solid var(--green-light);
+	width: 3.75rem;
+	height: 3.75rem;
+	padding: 0.1875rem;
+	display: flex;
+	background: var(--gray-600);
+	> img {
+		border-radius: 6px;
+	}
+}
+
+.vertical .avatarFrame {
+	margin-bottom: 1rem;
+}
+
+.horizontal .avatarFrame {
+	margin-right: 1rem;
+}
+
+.only-avatar .avatarFrame {
+	border: none;
+	width: 3.125rem;
+	height: 3.125rem;
+}
+
+.avatarFrame .avatar span {
+	font-size: 0.875rem;
+	color: var(--gray-300);
+}
+
+.avatar strong {
+	color: var(--gray-100);
+}
+
+.userInfo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.horizontal .userInfo {
+	align-items: flex-start;
+}
+
+.only-avatar .userInfo {
+	display: none;
+}

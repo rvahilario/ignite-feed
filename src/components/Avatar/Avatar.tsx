@@ -1,4 +1,4 @@
-import './Avatar.modules.css'
+import styles from './Avatar.module.css'
 
 import defaultAvatar from '../../assets/avatar-default.svg'
 
@@ -16,12 +16,12 @@ export function Avatar({
 	orientation = 'horizontal',
 }: AvatarProps) {
 	return (
-		<div className={`avatar ${orientation}`}>
-			<div className={`avatar-frame -${orientation}`}>
+		<div className={`${styles.avatar} ${styles[orientation]}`}>
+			<div className={`${styles.avatarFrame} ${styles[orientation]}`}>
 				<img src={avatarImg || defaultAvatar} />
 			</div>
 
-			<div className={`user-info -${orientation}`}>
+			<div className={`${styles.userInfo} ${styles[orientation]}`}>
 				<strong>{username}</strong>
 				{title && <span>{title}</span>}
 			</div>
