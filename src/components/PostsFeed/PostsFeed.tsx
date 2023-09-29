@@ -1,4 +1,4 @@
-import './PostsFeed.modules.css'
+import styles from './PostsFeed.module.css'
 
 import { PostWidget } from '../PostWidget'
 
@@ -10,7 +10,7 @@ export function PostsFeed({}: PostsFeedProps) {
 	const postsList = Object.entries(postsMock)
 
 	return (
-		<div className="feed-wrapper">
+		<div className={styles.wrapper}>
 			{postsList.map(([postId, post]) => {
 				return <PostWidget key={postId} postId={postId} post={post} />
 			})}

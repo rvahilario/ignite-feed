@@ -1,4 +1,4 @@
-.feed-wrapper {
+.wrapper {
 	> article + article {
 		margin-top: 2rem;
 	}
