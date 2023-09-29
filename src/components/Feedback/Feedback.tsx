@@ -1,4 +1,4 @@
-import './Feedback.modules.css'
+import styles from './Feedback.module.css'
 import moment from 'moment'
 import { formatTimestampToDateTime } from '../../utils'
 
@@ -18,16 +18,16 @@ export function Feedback({ feedback, user, readOnly }: FeedbackProps) {
 	const time = formatTimestampToDateTime(feedback.timestamp)
 
 	return (
-		<div className="feedback">
+		<div className={styles.feedback}>
 			<Avatar
 				username={user.username}
 				orientation={'only-avatar'}
 				avatarImg={user.avatarImg}
 			/>
 
-			<div className="fb-wrapper">
-				<div className="fb-container">
-					<header className="fb-header">
+			<div className={styles.fbWrapper}>
+				<div className={styles.fbContainer}>
+					<header className={styles.fbHeader}>
 						<div>
 							<strong>
 								{user.username}
@@ -53,10 +53,10 @@ export function Feedback({ feedback, user, readOnly }: FeedbackProps) {
 						)}
 					</header>
 
-					<p className="fb-content">{feedback.content}</p>
+					<p className={styles.fbContent}>{feedback.content}</p>
 				</div>
 
-				<footer className="fb-like">
+				<footer className={styles.fbLike}>
 					<Button
 						variant="like"
 						likes={feedback.likes.length}

@@ -9,23 +9,23 @@
 	}
 }
 
-.fb-wrapper {
+.fbWrapper {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 }
 
-.fb-container {
+.fbContainer {
 	background: #29292e;
 	padding: 1rem 1rem 1.5rem;
 	border-radius: 0.5rem;
 }
 
-.fb-content {
+.fbContent {
 	margin-top: 1rem;
 }
 
-.fb-header {
+.fbHeader {
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
@@ -34,17 +34,19 @@
 		display: flex;
 		flex-direction: column;
 		> strong {
+			line-height: 1.6;
 			> span {
 				color: var(--gray-300);
 			}
 		}
 		> time {
+			line-height: 1.6;
 			font-size: 0.75rem;
 			color: var(--gray-300);
 		}
 	}
 }
 
-.fb-like {
+.fbLike {
 	margin-top: 1rem;
 }
