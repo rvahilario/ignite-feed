@@ -53,17 +53,17 @@ export function Feedback({ feedback, user, readOnly }: FeedbackProps) {
 						)}
 					</header>
 
-					<div className="fb-content">{feedback.content}</div>
+					<p className="fb-content">{feedback.content}</p>
 				</div>
 
-				<div className="fb-like">
+				<footer className="fb-like">
 					<Button
 						variant="like"
 						likes={feedback.likes.length}
 						pressed={feedback.likes.includes(LOGGED_USER)}
 						onClick={() => console.log('like')}
 					/>
-				</div>
+				</footer>
 			</div>
 		</div>
 	)

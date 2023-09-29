@@ -7,29 +7,29 @@
 .vertical {
 	flex-direction: column;
 	position: relative;
-	top: -35px;
+	top: -2.1875rem;
 }
 
 .vertical .avatar-frame {
-	margin-bottom: 16px;
+	margin-bottom: 1rem;
 }
 
 .horizontal .avatar-frame {
-	margin-right: 16px;
+	margin-right: 1rem;
 }
 
 .avatar-frame {
 	border-radius: 8px;
 	border: 2px solid var(--green-light);
-	width: 60px;
-	height: 60px;
-	padding: 3px;
+	width: 3.75rem;
+	height: 3.75rem;
+	padding: 0.1875rem;
 	display: flex;
 	background: var(--gray-600);
 	&.-only-avatar {
 		border: none;
-		width: 50px;
-		height: 50px;
+		width: 3.125rem;
+		height: 3.125rem;
 	}
 }
 

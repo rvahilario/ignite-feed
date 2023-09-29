@@ -21,8 +21,10 @@
 .container-button {
 	border-top: 1px solid var(--gray-500);
 	padding: 1.5rem 2rem 2rem;
-	width: max-content;
 	line-height: normal;
 	position: relative;
-	top: -20px;
+	top: -1.25rem;
+	> button {
+		margin: auto;
+	}
 }
