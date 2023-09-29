@@ -1,4 +1,4 @@
-import './Sidebar.modules.css'
+import styles from './Sidebar.module.css'
 
 import { Avatar } from '../Avatar'
 import { Button } from '../Button'
@@ -17,17 +17,24 @@ export function Sidebar({ user }: SidebarProps) {
 	}
 
 	return (
-		<aside className="sidebar">
-			<img className="cover-image" src={user.coverImgSrc || COVER_DEFAULT} />
+		<aside className={styles.sidebar}>
+			<img
+				className={styles.coverImage}
+				src={user.coverImgSrc || COVER_DEFAULT}
+			/>
 			<Avatar
 				username={user.username}
 				avatarImg={user.avatarImg}
 				title={user.title}
 				orientation="vertical"
 			/>
-			<div className="container-button">
+			<div className={styles.containerButton}>
 				<Button variant={'outline'} onClick={handleEditProfile}>
-					<PencilSimpleLine size={'1.25rem'} weight="bold" className="icon" />
+					<PencilSimpleLine
+						size={'1.25rem'}
+						weight="bold"
+						className={styles.icon}
+					/>
 					Edit your profile
 				</Button>
 			</div>
