@@ -1,5 +1,5 @@
 import './global.css'
-import './App.modules.css'
+import styles from './App.module.css'
 
 import { Header } from './components/Header'
 import { Sidebar } from './components/Sidebar'
@@ -11,7 +11,7 @@ export function App() {
 	return (
 		<>
 			<Header />
-			<div className="wrapper">
+			<div className={styles.wrapper}>
 				<Sidebar user={usersMock['leslieAlexander']} />
 				<PostsFeed />
 			</div>
