@@ -1,5 +1,5 @@
 import styles from './PostWidget.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Avatar } from '../Avatar'
 import { Button } from '../Button'
@@ -9,6 +9,8 @@ import { formatTimestampToDateTime } from '../../utils'
 import { LOGGED_USER, usersMock } from '../../mocks'
 import moment from 'moment'
 
+const MS_TO_SECONDS = 1000
+
 interface PostWidgetProps {
 	postId: string
 	post: PostType
@@ -17,11 +19,31 @@ interface PostWidgetProps {
 export function PostWidget({ postId, post }: PostWidgetProps) {
 	const [comment, setComment] = useState('')
 	const time = formatTimestampToDateTime(post.timestamp)
-	const feedbacksList = (post.feedbacks && Object.entries(post.feedbacks)) || []
+	const [feedbacks, setFeedbacks] = useState(post.feedbacks || {})
+	const [feedbacksList, setFeedbacksList] = useState(
+		Object.entries(feedbacks) || []
+	)
 
+	// just to simulate a real feedback submission without a backend
 	function submitFeedback() {
-		console.log('submit comment: ', comment)
+		const newFeedback: FeedbackType = {
+			user: LOGGED_USER,
+			content: comment,
+			timestamp: Date.now() / MS_TO_SECONDS, // timestamp in seconds fix browser compatibility
+			likes: [],
+		}
+		console.log('newFeedback', newFeedback)
+
+		setFeedbacks((prevState) => ({
+			...prevState,
+			[`${LOGGED_USER}-${Date.now().toString()}`]: newFeedback,
+		}))
+		setComment('')
 	}
+
+	useEffect(() => {
+		setFeedbacksList(Object.entries(feedbacks))
+	}, [feedbacks])
 
 	return (
 		<article key={postId} className={styles.postContainer}>
@@ -47,6 +69,8 @@ export function PostWidget({ postId, post }: PostWidgetProps) {
 			<footer className={styles.postFooter}>
 				<strong>Leave your feedback.</strong>
 				<textarea
+					id={`${postId}-comment`}
+					value={comment}
 					placeholder="Write a comment..."
 					onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
 						setComment(event.target.value)
