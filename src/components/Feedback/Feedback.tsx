@@ -14,6 +14,7 @@ interface FeedbackProps {
 	user: UserType
 	readOnly: boolean
 	onDeleteFeedback: (feedbackId: string, readOnly: boolean) => void
+	onUpdateFeedback: (feedbackId: string, feedBack: FeedbackType) => void
 }
 
 export function Feedback({
@@ -22,8 +23,21 @@ export function Feedback({
 	user,
 	readOnly,
 	onDeleteFeedback,
+	onUpdateFeedback,
 }: FeedbackProps) {
 	const time = formatTimestampToDateTime(feedback.timestamp)
+	const { likes } = feedback
+
+	const handleLikeFeedback = () => {
+		const newFeedback: FeedbackType = {
+			...feedback,
+			likes: likes.includes(LOGGED_USER)
+				? likes.filter((like) => like !== LOGGED_USER)
+				: [...likes, LOGGED_USER],
+		}
+
+		onUpdateFeedback(feedbackId, newFeedback)
+	}
 
 	return (
 		<div className={styles.feedback}>
@@ -70,7 +84,7 @@ export function Feedback({
 						variant="like"
 						likes={feedback.likes.length}
 						pressed={feedback.likes.includes(LOGGED_USER)}
-						onClick={() => console.log('like')}
+						onClick={handleLikeFeedback}
 					/>
 				</footer>
 			</div>

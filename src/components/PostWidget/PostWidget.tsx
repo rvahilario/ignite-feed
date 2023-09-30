@@ -54,6 +54,13 @@ export function PostWidget({ postId, post }: PostWidgetProps) {
 		}
 	}
 
+	const handleUpdateFeedback = (feedbackId: string, feedBack: FeedbackType) => {
+		setFeedbacks((prevState) => {
+			const newState = { ...prevState, [feedbackId]: feedBack }
+			return newState
+		})
+	}
+
 	useEffect(() => {
 		setFeedbacksList(Object.entries(feedbacks))
 	}, [feedbacks])
@@ -100,6 +107,7 @@ export function PostWidget({ postId, post }: PostWidgetProps) {
 					user={usersMock[feedback.user]}
 					readOnly={LOGGED_USER !== feedback.user && LOGGED_USER !== post.user}
 					onDeleteFeedback={handleDeleteFeedback}
+					onUpdateFeedback={handleUpdateFeedback}
 				/>
 			))}
 		</article>
