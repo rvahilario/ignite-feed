@@ -10,11 +10,19 @@ import { LOGGED_USER } from '../../mocks'
 
 interface FeedbackProps {
 	feedback: FeedbackType
+	feedbackId: string
 	user: UserType
 	readOnly: boolean
+	onDeleteFeedback: (feedbackId: string, readOnly: boolean) => void
 }
 
-export function Feedback({ feedback, user, readOnly }: FeedbackProps) {
+export function Feedback({
+	feedback,
+	feedbackId,
+	user,
+	readOnly,
+	onDeleteFeedback,
+}: FeedbackProps) {
 	const time = formatTimestampToDateTime(feedback.timestamp)
 
 	return (
@@ -45,11 +53,12 @@ export function Feedback({ feedback, user, readOnly }: FeedbackProps) {
 						</div>
 
 						{!readOnly && (
-							<Trash
-								size={'1.5rem'}
-								color={'var(--gray-300)'}
-								weight="regular"
-							/>
+							<button
+								className={styles.trashButton}
+								onClick={() => onDeleteFeedback(feedbackId, readOnly)}
+							>
+								<Trash size={'1.5rem'} weight="regular" />
+							</button>
 						)}
 					</header>
 

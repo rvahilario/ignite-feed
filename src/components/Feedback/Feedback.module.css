@@ -50,3 +50,13 @@
 .fbLike {
 	margin-top: 1rem;
 }
+
+.trashButton {
+	background: transparent;
+	box-shadow: none;
+	color: var(--gray-300);
+	border: none;
+	&:hover {
+		color: var(--red-danger);
+	}
+}

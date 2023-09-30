@@ -25,7 +25,7 @@ export function PostWidget({ postId, post }: PostWidgetProps) {
 	)
 
 	// just to simulate a real feedback submission without a backend
-	function submitFeedback() {
+	function handleSubmitFeedback() {
 		const newFeedback: FeedbackType = {
 			user: LOGGED_USER,
 			content: comment,
@@ -39,6 +39,19 @@ export function PostWidget({ postId, post }: PostWidgetProps) {
 			[`${LOGGED_USER}-${Date.now().toString()}`]: newFeedback,
 		}))
 		setComment('')
+	}
+
+	// simulate removing a feedback without a backend
+	const handleDeleteFeedback = (feedbackId: string, readOnly: boolean) => {
+		if (!readOnly) {
+			setFeedbacks((prevState) => {
+				const newState = { ...prevState }
+				delete newState[feedbackId]
+				return newState
+			})
+		} else {
+			throw new Error("You haven't permission to delete this feedback.")
+		}
 	}
 
 	useEffect(() => {
@@ -76,15 +89,17 @@ export function PostWidget({ postId, post }: PostWidgetProps) {
 						setComment(event.target.value)
 					}
 				/>
-				{comment && <Button onClick={submitFeedback}>Publish</Button>}
+				{comment && <Button onClick={handleSubmitFeedback}>Publish</Button>}
 			</footer>
 
 			{feedbacksList.map(([id, feedback]) => (
 				<Feedback
 					key={id}
+					feedbackId={id}
 					feedback={feedback}
 					user={usersMock[feedback.user]}
 					readOnly={LOGGED_USER !== feedback.user && LOGGED_USER !== post.user}
+					onDeleteFeedback={handleDeleteFeedback}
 				/>
 			))}
 		</article>
